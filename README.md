@@ -1,5 +1,5 @@
 # Shimakaze
-The shittiest discord bot ever
+The shittiest discord bot ever.
 
 Installation instruction:
 
