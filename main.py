@@ -57,7 +57,7 @@ async def on_message(message):
 
 	Response = [
 		['duy ko làm bài tập', 'Thằng nát này <:pepeW:687878953419145296>'],
-
+		['tài', 'Tài là thằng nào tao ko quen'],
 	]
 
 	for trigger in Response:
