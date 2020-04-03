@@ -74,6 +74,11 @@ async def on_message(message):
                 break
         if reply: await message.channel.send(trigger[1])
 
+#    if 'corona' in message.content.lower():
+#        cough =
+#        selfVoice = discord.VoiceChannel.connect()
+#        selfVoice.play(cough)
+
     VietKong = discord.utils.get(client.guilds, name='Viet Kong')
     if 'bác tài' in message.content.lower():
         print(VietKong.roles)
@@ -98,7 +103,12 @@ async def on_message(message):
 
 @client.event
 async def on_message_delete(message):
-    response = message.author.mention + " Mày đang giấu cái gì thế"
+    responses = [
+        message.author.mention + " Mày đang giấu cái gì thế",
+        message.author.mention + " very ninja delete",
+        message.author.mention + " ninja delete <:pepeW:687878953419145296>"
+        ]
+    response = random.choice(responses)
     if not message.author.bot: await message.channel.send(response)
 
 
