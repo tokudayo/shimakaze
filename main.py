@@ -37,10 +37,15 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if client.user.mentioned_in(message):
-        await message.channel.send('Để yên cho bố thủ dâm')
+    mentionResponses = [
+        'Để yên cho bố thủ dâm',
+    ]
 
-    responses = [
+    if client.user.mentioned_in(message):
+        response = random.choice(mentionResponses)
+        await message.channel.send(response)
+
+    swearResponses = [
         f'Chửi thề con cặc nói chuyện vô văn hóa',
         (
             'Tao có súng đây này\n'
@@ -52,12 +57,12 @@ async def on_message(message):
 
     for word in curse:
         if word in message.content.lower():
-            response = random.choice(responses)
+            response = random.choice(swearResponses)
             response = message.author.mention + " " + response
             await message.channel.send(response)
             break
 
-    Response = [
+    keywordResponses = [
         ['duy ko làm bài tập', 'Thằng nát này <:pepeW:687878953419145296>'],
         ['tài', 'Gọi bác thêm lần nữa là kick'],
         ['đen', 'phân biệt chủng tộc ăn cac'],
@@ -66,7 +71,7 @@ async def on_message(message):
         ['nát', 'nát'],
     ]
 
-    for trigger in Response:
+    for trigger in keywordResponses:
         reply = True
         for word in trigger[0].split():
             if word not in message.content.lower():
