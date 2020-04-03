@@ -53,7 +53,7 @@ async def on_message(message):
     for word in curse:
         if word in message.content.lower():
             response = random.choice(responses)
-            response = message.author.mention + response
+            response = message.author.mention + " " + response
             await message.channel.send(response)
             break
 
@@ -74,10 +74,17 @@ async def on_message(message):
                 break
         if reply: await message.channel.send(trigger[1])
 
-#    if 'corona' in message.content.lower():
+    if message.channel.name == 'nsfw':
+        if message.author.id == 215806040900501505:
+            await message.channel.send('địt mẹ cái thg đồi trụy')
+        if message.author.id == 274866353586962433:
+            await message.channel.send('furry <:pepeW:687878953419145296>')
+
+#    if 'corona' in message.content.lower() and discord.VoiceChannel.user != null:
 #        cough =
 #        selfVoice = discord.VoiceChannel.connect()
 #        selfVoice.play(cough)
+#        await disconnect()
 
     VietKong = discord.utils.get(client.guilds, name='Viet Kong')
     if 'bác tài' in message.content.lower():
