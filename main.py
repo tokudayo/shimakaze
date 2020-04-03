@@ -45,7 +45,7 @@ async def on_message(message):
 		),
 	]
 
-	curse = ['cặc', 'địt']
+	curse = ['cặc', 'địt', 'lồn']
 
 	for word in curse:
 		if word in message.content.lower():
@@ -57,11 +57,45 @@ async def on_message(message):
 
 	Response = [
 		['duy ko làm bài tập', 'Thằng nát này <:pepeW:687878953419145296>'],
-
+		['tài', 'Gọi bác thêm lần nữa là kick'],
+		['đen', 'phân biệt chủng tộc ăn cac'],
+		['nigga', 'phân biệt chủng tộc ăn cac'],
 	]
 
 	for trigger in Response:
-		if trigger[0] in message.content.lower():
-			await message.channel.send(trigger[1])
+		reply = True
+		for word in trigger[0].split():
+			if word not in message.content.lower():
+				reply = False
+				break
+		if reply: await message.channel.send(trigger[1])
+
+	VietKong = discord.utils.get(client.guilds, name='Viet Kong')
+	if 'bác tài' in message.content.lower():
+		print(VietKong.roles)
+		gulag = discord.utils.get(VietKong.roles, name='Gulag')
+		print(gulag.name)
+		mem = discord.utils.get(VietKong.members, name=message.author.name)
+		admin = discord.utils.get(VietKong.members, name=client.user.name)
+		response = message.author.mention + " Con chó này cho vào gulag"
+		await message.channel.send(response)
+		await mem.add_roles(gulag)
+
+	if message.content.lower().startswith("cho con chó") and 'gulag' in message.content.lower():
+		gulag = discord.utils.get(VietKong.roles, name='Gulag')
+		print(gulag.name)
+		target = message.content.split()[3]
+		if target == 'Shimakaze': target = message.author.name
+		mem = discord.utils.get(VietKong.members, name=target)
+		response = mem.mention + " Con chó này cho vào gulag"
+		await message.channel.send(response)
+		await mem.add_roles(gulag)
+
+
+
+@client.event
+async def on_message_delete(message):
+	response = message.author.mention + " Mày đang giấu cái gì thế"
+	if not message.author.bot: await message.channel.send(response)
 
 client.run(TOKEN)
