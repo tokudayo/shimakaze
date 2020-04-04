@@ -39,6 +39,8 @@ async def on_message(message):
 
     mentionResponses = [
         'Để yên cho bố thủ dâm',
+        'Vào thủ dâm cùng tao ko?',
+        'https://hentaiz.net/series/oni-chichi',
     ]
 
     if client.user.mentioned_in(message):
