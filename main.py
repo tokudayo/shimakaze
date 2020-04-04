@@ -56,6 +56,7 @@ async def on_message(message):
             'Tao có súng đây này\n'
             'Chửi thề là tao bắn mày á'
         ),
+        message.author.mention + 'địt mẹ nhà mày, bố mẹ dạy mày kiểu đéo j đấy cái thg chó vô văn hóa kia',
     ]
 
     curse = ['cặc', 'địt', 'lồn']
