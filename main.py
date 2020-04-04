@@ -85,6 +85,9 @@ async def on_message(message):
         if message.author.id == 274866353586962433:
             await message.channel.send('furry <:pepeW:687878953419145296>')
 
+    if (message.channel.name == 'general' or message.channel.name == 'trash') and 'anime' in message.content.lower():
+        await message.channel.send(message.author.mention + ' fucking weeb <:pepeW:687878953419145296>')
+
 #    if 'corona' in message.content.lower() and discord.VoiceChannel.user != null:
 #        cough =
 #        selfVoice = discord.VoiceChannel.connect()
