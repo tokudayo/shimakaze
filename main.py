@@ -43,6 +43,9 @@ async def on_message(message):
         'https://hentaiz.net/series/oni-chichi',
     ]
 
+
+    github như cặc hoặc do t ko biết dùng
+
     if client.user.mentioned_in(message):
         response = random.choice(mentionResponses)
         await message.channel.send(response)
