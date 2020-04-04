@@ -2,6 +2,7 @@ import os
 import random
 import discord
 from dotenv import load_dotenv
+from onstart import *
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -11,17 +12,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
-    for guild in client.guilds:
-        print(
-            f'{client.user} is connected to the following guild:\n'
-            f'{guild.name} (id: {guild.id})'
-        )
-
-    # During dev
-    VietKong = discord.utils.get(client.guilds, name='Viet Kong')
-    members = '\n - '.join([member.name for member in VietKong.members])
-    print(f'Guild Members:\n - {members}')
+    startupInfo(client)
 
 
 @client.event
@@ -43,8 +34,6 @@ async def on_message(message):
         'https://hentaiz.net/series/oni-chichi',
     ]
 
-
-    github như cặc hoặc do t ko biết dùng
 
     if client.user.mentioned_in(message):
         response = random.choice(mentionResponses)
