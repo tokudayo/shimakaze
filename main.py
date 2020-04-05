@@ -9,11 +9,15 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
-
+VietKong = discord.Guild
 
 @client.event
 async def on_ready():
     startupInfo(client)
+    #during dev:
+    global VietKong
+    VietKong = discord.utils.get(client.guilds, name='Viet Kong')
+    #end
 
 
 @client.event
@@ -26,19 +30,12 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
+    if message.author == client.user: return
 
-    mentionResponse(message)
-
-    if 'bác tài' in message.content.lower():
-        gulag1(message)
-
-    swearResponse(message)
-
-    keywordResponse(message)
-
-    jokeResponse(message)
+    await mentionResponse(client, message)
+    await swearResponse(client, message)
+    await keywordResponse(client, message)
+    await jokeResponse(client, message)
 
     #    if 'corona' in message.content.lower() and discord.VoiceChannel.user != null:
     #        cough =
@@ -46,8 +43,10 @@ async def on_message(message):
     #        selfVoice.play(cough)
     #        await disconnect()
 
+    if 'bác tài' in message.content.lower():
+        await gulag1(client, VietKong, message)
     if message.content.lower().startswith("cho con chó") and 'gulag' in message.content.lower():
-        gulag2(message)
+        await gulag2(client, VietKong , message)
 
 
 @client.event

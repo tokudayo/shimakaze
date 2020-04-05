@@ -1,4 +1,3 @@
-from main import client
 import random
 
 mentionResponses = [
@@ -32,13 +31,13 @@ keywordResponses = [
 ]
 
 
-def mentionResponse(message):
+async def mentionResponse(client, message):
     if client.user.mentioned_in(message):
         response = random.choice(mentionResponses)
         await message.channel.send(response)
 
 
-def swearResponse(message):
+async def swearResponse(client, message):
     for word in swearWords:
         if word in message.content.lower():
             response = random.choice(swearResponses)
@@ -47,7 +46,7 @@ def swearResponse(message):
             break
 
 
-def keywordResponse(message):
+async def keywordResponse(client, message):
     for trigger in keywordResponses:
         reply = True
         for word in trigger[0].split():
@@ -57,7 +56,7 @@ def keywordResponse(message):
         if reply: await message.channel.send(trigger[1])
 
 
-def jokeResponse(message):
+async def jokeResponse(client, message):
     if message.channel.name == 'nsfw':
         if message.author.id == 215806040900501505:
             await message.channel.send('địt mẹ cái thg đồi trụy')
