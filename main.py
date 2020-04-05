@@ -1,6 +1,5 @@
 import os
 import random
-import discord
 from dotenv import load_dotenv
 from onstart import *
 
@@ -30,8 +29,8 @@ async def on_message(message):
 
     mentionResponses = [
         'Để yên cho bố thủ dâm',
-        'Vào thủ dâm cùng tao ko?',
-        'https://hentaiz.net/series/oni-chichi',
+        'Vào thủ dâm cùng tao ko? ( ͡° ͜ʖ ͡°)',
+        'https://hanime.tv/hentai-videos/oni-chichi-1-episode-1',
     ]
 
 
