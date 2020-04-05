@@ -1,3 +1,4 @@
+from main import client
 import random
 
 mentionResponses = [
@@ -7,12 +8,12 @@ mentionResponses = [
 ]
 
 swearResponses = [
-        f'Chửi thề con cặc nói chuyện vô văn hóa',
-        (
-            'Tao có súng đây này\n'
-            'Chửi thề là tao bắn mày á'
-        ),
-        'địt mẹ nhà mày, bố mẹ dạy mày kiểu đéo j đấy cái thg chó vô văn hóa kia',
+    f'Chửi thề con cặc nói chuyện vô văn hóa',
+    (
+        'Tao có súng đây này\n'
+        'Chửi thề là tao bắn mày á'
+    ),
+    'địt mẹ nhà mày, bố mẹ dạy mày kiểu đéo j đấy cái thg chó vô văn hóa kia',
 ]
 
 swearWords = [
@@ -30,10 +31,12 @@ keywordResponses = [
     ['nát', 'nát'],
 ]
 
-def mentionResponse(client, message):
+
+def mentionResponse(message):
     if client.user.mentioned_in(message):
         response = random.choice(mentionResponses)
         await message.channel.send(response)
+
 
 def swearResponse(message):
     for word in swearWords:
@@ -43,6 +46,7 @@ def swearResponse(message):
             await message.channel.send(response)
             break
 
+
 def keywordResponse(message):
     for trigger in keywordResponses:
         reply = True
@@ -51,6 +55,7 @@ def keywordResponse(message):
                 reply = False
                 break
         if reply: await message.channel.send(trigger[1])
+
 
 def jokeResponse(message):
     if message.channel.name == 'nsfw':
