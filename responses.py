@@ -65,3 +65,6 @@ async def jokeResponse(client, message):
 
     if (message.channel.name == 'general' or message.channel.name == 'trash') and 'anime' in message.content.lower():
         await message.channel.send(message.author.mention + ' fucking weeb <:pepeW:687878953419145296>')
+
+    if 'good' in message.content and 'bot' in message.content:
+        await message.channel.send('Lick my ass, Onii-chan **OwO**')
