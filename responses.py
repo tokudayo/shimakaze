@@ -1,4 +1,12 @@
+import os
 import random
+import discord
+import asyncio
+from dotenv import load_dotenv
+
+load_dotenv()
+
+FFMPEG = os.getenv('FFMPEG')
 
 mentionResponses = [
     'Để yên cho bố thủ dâm',
@@ -43,6 +51,23 @@ async def swearResponse(client, message):
             response = random.choice(swearResponses)
             response = message.author.mention + " " + response
             await message.channel.send(response)
+    
+            response = message.author.mention + " vào voice bố bảo"
+            await message.channel.send(response)
+            await asyncio.sleep(8)
+
+            VietKong = discord.utils.get(client.guilds, name='Viet Kong')
+            voice = discord.utils.get(VietKong.voice_channels, name='voice?')
+            if message.author not in voice.members:
+                await message.channel.send(message.author.mention + " Đm con chó này sợ ko dám vào à <:KEKW:687878492058026027>")
+            else:
+                try:
+                    vc = await voice.connect()
+                    vc.play(discord.FFmpegPCMAudio(executable=FFMPEG, source='audio/cac.mp3'))
+                    await asyncio.sleep(6)
+                    await vc.disconnect()
+                except:
+                    await message.channel.send(message.author.mention + "Mày làm tao crash rồi chửi ít thôi con chó <:pepeW:687878953419145296>")
             break
 
 

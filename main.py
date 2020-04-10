@@ -47,7 +47,7 @@ async def on_message(message):
         await gulag1(client, VietKong, message)
     if message.content.lower().startswith("cho con chó") and 'gulag' in message.content.lower():
         await gulag2(client, VietKong, message)
-
+        
 
 @client.event
 async def on_message_delete(message):
