@@ -14,6 +14,7 @@ pip install -r requirements.txt
 ### Step 1.4: Install ffmpeg
 ### Step 1.5: Create a .env file in the root directory, containing:
 DISCORD_TOKEN: Token of the bot
+
 FFMPEG: Path to ffmpeg excutable (ffmpeg.exe)
 
 Example:
