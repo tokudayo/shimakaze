@@ -26,7 +26,10 @@ swearResponses = [
 swearWords = [
     'cặc',
     'địt',
-    'lồn'
+    'lồn',
+    'buồi',
+    'cằc',
+    'đụ',
 ]
 
 keywordResponses = [
