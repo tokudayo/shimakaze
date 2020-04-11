@@ -42,24 +42,24 @@ keywordResponses = [
 ]
 
 
-async def mentionResponse(client, message):
-    if client.user.mentioned_in(message):
+async def mentionResponse(user, message):
+    if user.mentioned_in(message):
         response = random.choice(mentionResponses)
         await message.channel.send(response)
 
 
-async def swearResponse(client, message):
+async def swearResponse(message):
     for word in swearWords:
         if word in message.content.lower():
             response = random.choice(swearResponses)
             response = message.author.mention + " " + response
             await message.channel.send(response)
-    
+
             response = message.author.mention + " vào voice bố bảo"
             await message.channel.send(response)
             await asyncio.sleep(8)
 
-            VietKong = discord.utils.get(client.guilds, name='Viet Kong')
+            VietKong = message.guild
             voice = discord.utils.get(VietKong.voice_channels, name='voice?')
             if message.author not in voice.members:
                 await message.channel.send(message.author.mention + " Đm con chó này sợ ko dám vào à <:KEKW:687878492058026027>")
@@ -67,14 +67,15 @@ async def swearResponse(client, message):
                 try:
                     vc = await voice.connect()
                     vc.play(discord.FFmpegPCMAudio(executable=FFMPEG, source='audio/cac.mp3'))
-                    await asyncio.sleep(6)
+                    while vc.is_playing():
+                        await asyncio.sleep(10)
                     await vc.disconnect()
                 except:
                     await message.channel.send(message.author.mention + "Mày làm tao crash rồi chửi ít thôi con chó <:pepeW:687878953419145296>")
             break
 
 
-async def keywordResponse(client, message):
+async def keywordResponse(message):
     for trigger in keywordResponses:
         reply = True
         for word in trigger[0].split():
@@ -84,7 +85,7 @@ async def keywordResponse(client, message):
         if reply: await message.channel.send(trigger[1])
 
 
-async def jokeResponse(client, message):
+async def jokeResponse(message):
     if message.channel.name == 'nsfw':
         if message.author.id == 215806040900501505:
             await message.channel.send('địt mẹ cái thg đồi trụy')
