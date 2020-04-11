@@ -32,10 +32,10 @@ async def on_member_join(member):
 async def on_message(message):
     if message.author == client.user: return
 
-    await mentionResponse(client, message)
-    await swearResponse(client, message)
-    await keywordResponse(client, message)
-    await jokeResponse(client, message)
+    await mentionResponse(client.user, message)
+    await swearResponse(message)
+    await keywordResponse(message)
+    await jokeResponse(message)
 
     #    if 'corona' in message.content.lower() and discord.VoiceChannel.user != null:
     #        cough =
