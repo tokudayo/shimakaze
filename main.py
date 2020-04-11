@@ -61,6 +61,3 @@ async def on_message_delete(message):
 
 
 client.run(TOKEN)
-
-#test git feature on Atom
-#test git feature on Atom 2
