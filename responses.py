@@ -71,7 +71,12 @@ async def swearResponse(message):
                         await asyncio.sleep(10)
                     await vc.disconnect()
                 except:
-                    await message.channel.send(message.author.mention + "Mày làm tao crash rồi chửi ít thôi con chó <:pepeW:687878953419145296>")
+                    gulag = discord.utils.get(message.guild.roles, name='Gulag')
+                    mem = message.author;
+                    await message.channel.send(message.author.mention + " Cho vào gulag ngồi nghĩ về cuộc đời <:pepeW:687878953419145296>")
+                    await mem.add_roles(gulag)
+                    #await message.channel.send(message.author.mention + "Mày làm tao crash rồi chửi ít thôi con chó <:pepeW:687878953419145296>")
+
             break
 
 
