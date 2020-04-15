@@ -37,16 +37,10 @@ async def on_message(message):
     await keywordResponse(message)
     await jokeResponse(message)
 
-    #    if 'corona' in message.content.lower() and discord.VoiceChannel.user != null:
-    #        cough =
-    #        selfVoice = discord.VoiceChannel.connect()
-    #        selfVoice.play(cough)
-    #        await disconnect()
-
     if 'bác tài' in message.content.lower():
-        await gulag1(client, VietKong, message)
+        await gulag1(message)
     if message.content.lower().startswith("cho con chó") and 'gulag' in message.content.lower():
-        await gulag2(client, VietKong, message)
+        await gulag2(client.user, message)
 
 
 @client.event
