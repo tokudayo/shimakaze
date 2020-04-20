@@ -30,6 +30,7 @@ swearWords = [
     'buồi',
     'cằc',
     'đụ',
+    'ching chong'
 ]
 
 keywordResponses = [
@@ -39,6 +40,34 @@ keywordResponses = [
     ['nigga', 'phân biệt chủng tộc ăn cac'],
     ['compe', 'đmm bố mày đang học'],
     ['nát', 'nát'],
+    ['f', 'https://tenor.com/view/press-f-pay-respect-keyboard-gif-12855017'],
+    ['x', 'Doubt'],
+    ['y', 'Shame'],
+    ['"y"', 'same'],
+]
+
+randomResponses = [
+    "Did you ever hear the tragedy of Kanna the dragon loli? I thought not, it's not a story Sagiri fans would tell you.\n\n"\
+    "It's a legend of the lolicons...\n\n\n\n\n\n\n\n"\
+    "Kanna the dragon loli was a gothic loli from the other world."\
+    " So powerful and cute she could use the force to influence the other school kids to win sports festivals..."\
+    " She had such a knowledge of the loli side that she could even keep the ones she cared about from growing up.\n\n"\
+    "She could actually save people from growing up?\n\n"\
+    "The loli side is a pathway to many abilities some consider to be...immoral.\n\n"\
+    "What happened to her?\n\n"\
+    "She became so powerful... the only thing she was afraid of was growing up, which eventually of course, she did."\
+    " Unfortunately, she taught her apprentice everything she knew. Then her apprentice made her a woman in her sleep."\
+    " Ironic, she could save others from growing up, but not herself.",
+
+    "I swear, every time I bring a girl home,"\
+    " I make sure to clean everything up in my room and take special care to ensure that my 5352 ranked core mmr is prominently on display,"\
+    " with mid ticked and ready to go with my dual monitor displaying my DotaBuff account."\
+    " But then when we get into my room, she just pushes me to the bed and starts making out with me right away."\
+    " Like, did you not notice my win streak? I didnt bring you here to make out."\
+    " I want you to experience the insane APM, the perfect CS, and the dead mid towers around the 8 minute mark."\
+    " I bet I play way better than your party friends."\
+    " Trust me, you havent experienced true skill until you try playing - wait where are you going?",
+
 ]
 
 
@@ -102,3 +131,10 @@ async def jokeResponse(message):
 
     if 'good' in message.content and 'bot' in message.content:
         await message.channel.send('Lick my ass, Onii-chan **OwO**')
+
+
+async def randomResponse(message):
+    lotto = random.choice(range(1, 50))
+    if lotto == 25:
+        response = random.choice(randomResponses)
+        await message.channel.send(response)

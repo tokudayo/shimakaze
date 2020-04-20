@@ -30,12 +30,13 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    if message.author == client.user: return
+    if message.author.bot: return
 
     await mentionResponse(client.user, message)
     await swearResponse(message)
     await keywordResponse(message)
     await jokeResponse(message)
+    await randomResponse(message)
 
     if 'bác tài' in message.content.lower():
         await gulag1(message)
